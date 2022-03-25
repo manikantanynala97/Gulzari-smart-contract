@@ -83,7 +83,7 @@ contract PersonAC {
         currentState = State.TRANSFERED;
     }
 
-    function withdraw() public payable onlyPersonA {
+    function withdraw() public  onlyPersonA {
         require(currentState == State.DEPOSITED, "Can't withdraw now");
         require(address(this).balance > 0  , "No amount is there in the account withdraw");
         payable(msg.sender).transfer(amount);
