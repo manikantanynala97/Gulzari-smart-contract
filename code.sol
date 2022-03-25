@@ -62,8 +62,8 @@ contract PersonAC {
         return true;
     }
 
-    function RequestedAmountByC(uint256 _amount) public pure returns(uint256) {
-        return _amount ;
+    function RequestedAmountByC() public view returns(uint256) {
+        return amount ;
     }
 
      receive() external payable 
@@ -77,7 +77,6 @@ contract PersonAC {
         require(GetApproveDeposit() == true , "You dont have the permission to take money from A ");
         bool approved = ApproveFund(msg.sender);
         require(approved == true ,"You are not the person to get the amount or else U have already deposit the amount");
-        RequestedAmountByC(_amount);
         require(address(this).balance >= amount , "Not required amount sent by user A");
         payable(msg.sender).transfer(_amount);
         currentState = State.TRANSFERED;
